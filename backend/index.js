@@ -7,7 +7,8 @@ const db = require('./db/connection.js')
 const app = express()
 const port = 5500;
 app.use(express.json())
-app.use(cors({ origin: true }));
+app.use(cors());
+app.options('*', cors()); 
 
 
 //Registration Endpoint
