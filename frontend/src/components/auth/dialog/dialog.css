@@ -1,0 +1,54 @@
+.inputMaps {
+    /* display: flex; */
+    height: 25px;
+    /* padding: 20px 20px;
+    margin: 8px 0; */
+    /* box-sizing: border-box;
+    padding-left: 100px;
+    text-align: center; */
+    align-items: center;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    /* display: block; */
+    width: 60%;
+    box-sizing: border-box; 
+
+}
+
+.game-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+    padding: 10px;
+
+    border-style: solid;
+    border-radius: 8px;
+    border-width: 1px;
+}
+
+.actions button {
+    height: 25px;
+    margin-right: 5px;
+    padding-inline: 10px;
+
+    border-style: none;
+    border-radius: 8px;
+    border-color: lightslategrey;
+}
+
+.edit {
+    font-size: medium;
+    width: 205px;
+    border-radius: 8px;
+    height: 45px;
+    background-color: deepskyblue;
+    color: white;
+}
+
+.delete {
+    background-color: crimson;
+    color: white;
+}
