@@ -27,7 +27,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://prueba-commerk-production.up.railway.app/register', formData);
+            const response = await axios.post('https://prueba-commerk-production.up.railway.app/register', formData);
             console.log("Registration Successful")
             navigate('/login')
         } catch (error) {

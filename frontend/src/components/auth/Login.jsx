@@ -24,7 +24,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://prueba-commerk-production.up.railway.app/login', formData);
+            const response = await axios.post('https://prueba-commerk-production.up.railway.app/login', formData);
             const { token } = response.data;
             //console.log("Login Token is: " + token)
             localStorage.setItem('token', token);

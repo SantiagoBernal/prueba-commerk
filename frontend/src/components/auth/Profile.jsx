@@ -12,7 +12,7 @@ const Profile = () => {
 
         const fetchUserDate = async () => {
             try {
-                const response = await axios.get('http://prueba-commerk-production.up.railway.app/profile', {
+                const response = await axios.get('https://prueba-commerk-production.up.railway.app/profile', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 });
                 setUserData(response.data.usuario);
