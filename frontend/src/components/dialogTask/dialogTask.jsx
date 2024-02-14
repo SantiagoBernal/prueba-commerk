@@ -19,7 +19,7 @@ export default function FormDialog(props) {
 
     const handleEditValues = () => {
         console.log(props.baseUrl)
-        axios.put(`http://localhost:5500/editTask`, {
+        axios.put(`http://prueba-commerk-production.up.railway.app/editTask`, {
             id: editValues.id,
             name_task: editValues.name_task,
             amount: editValues.amount,

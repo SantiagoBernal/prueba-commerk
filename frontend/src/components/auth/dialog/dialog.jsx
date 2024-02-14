@@ -29,7 +29,7 @@ export default function FormDialog(props) {
 
     const handleEditValues = () => {
         console.log(props.baseUrl)
-        axios.put(`http://localhost:5500/edit`, {
+        axios.put(`http://prueba-commerk-production.up.railway.app/edit`, {
             id: editValues.id,
             username: editValues.username,
             last_name: editValues.last_name,

@@ -14,7 +14,7 @@ const Card = (props) => {
   
 
     const handleDeleteGame = () => {
-        axios.delete(`http://localhost:5500/delete/${props.id}`);
+        axios.delete(`http://prueba-commerk-production.up.railway.app/delete/${props.id}`);
     }
 
     return (
