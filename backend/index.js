@@ -7,8 +7,12 @@ const db = require('./db/connection.js')
 const app = express()
 const port = 5500;
 app.use(express.json())
-app.use(cors());
-app.options('*', cors()); 
+// app.use(cors());
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+  }
+  app.use(cors(corsOptions));
 
 
 //Registration Endpoint
