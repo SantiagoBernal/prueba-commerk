@@ -5,14 +5,9 @@ const jwt = require('jsonwebtoken')
 const db = require('./db/connection.js')
 
 const app = express()
-const port = 5500;
+const port = 48630;
 app.use(express.json())
-// app.use(cors());
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
-  }
-  app.use(cors(corsOptions));
+app.use(cors());
 
 
 //Registration Endpoint
@@ -23,7 +18,7 @@ app.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10)
     // console.log(hashedPassword);
     // console.log("Usuario",username,email,last_name, position_company, phone_number);
-    
+
 
     const sql = 'INSERT INTO users (username, password, email, last_name, position_company, phone_number ) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(sql, [username, hashedPassword, email, last_name, position_company, phone_number], (err, result) => {
@@ -86,14 +81,14 @@ const authenticate = (req, res, next) => {
     }
 }
 
-app.get('/profile', authenticate, (req, res)=>{
+app.get('/profile', authenticate, (req, res) => {
     const userId = req.userId;
     const sql = "SELECT * FROM users WHERE id = ?";
-    db.query(sql, [userId], (err, result)=>{
+    db.query(sql, [userId], (err, result) => {
         if (err || result.length === 0) {
-            res.status(500).json({message: "Error Fetching Details"})
-        }else{
-            res.json({usuario: result[0]});
+            res.status(500).json({ message: "Error Fetching Details" })
+        } else {
+            res.json({ usuario: result[0] });
         }
     })
 });
@@ -107,10 +102,10 @@ app.put('/edit', (req, res) => {
     const { phone_number } = req.body;
 
     let sql = "UPDATE users SET username = ?, last_name = ?, position_company = ? , phone_number = ? WHERE id = ?";
-    db.query(sql, [username, last_name, position_company, phone_number, id], (err,result) =>{
+    db.query(sql, [username, last_name, position_company, phone_number, id], (err, result) => {
         if (err) {
             console.log(err);
-        }else{
+        } else {
             res.send(result);
             console.log(result);
         }
@@ -118,12 +113,12 @@ app.put('/edit', (req, res) => {
 });
 
 // Product LIst endpont
-app.get('/products', (req, res)=>{
+app.get('/products', (req, res) => {
     const sql = 'SELECT * FROM products';
-    db.query(sql, (err, result)=>{
-        if(err){
-            res.status(500).json({message: 'Error Fetching Products'})
-        }else{
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.status(500).json({ message: 'Error Fetching Products' })
+        } else {
             res.json(result);
         }
     })
@@ -139,10 +134,10 @@ app.post("/task", (req, res) => {
     const { date } = req.body;
 
     let sql = "INSERT INTO task (username, name_task, email, amount, date) VALUES (?,?,?,?,?)"
-    db.query(sql, [username, name_task, email, amount, date], (err,result) =>{
+    db.query(sql, [username, name_task, email, amount, date], (err, result) => {
         if (err) {
             console.log(err);
-        }else{
+        } else {
             console.log(result);
         }
     })
@@ -153,32 +148,32 @@ app.put("/editTask", (req, res) => {
     const { id } = req.body;
     const { name_task } = req.body;
     const { amount } = req.body;
-   
+
 
     let sql = "UPDATE task SET name_task = ?, amount = ? WHERE id = ?";
-    db.query(sql, [name_task, amount, id], (err,result) =>{
+    db.query(sql, [name_task, amount, id], (err, result) => {
         if (err) {
             console.log(err);
-        }else{
+        } else {
             res.send(result);
         }
     })
 });
 
-app.delete("/delete/:index", (req,res) =>{
+app.delete("/delete/:index", (req, res) => {
     const { index } = req.params
 
     let sql = "DELETE FROM task WHERE id = ?"
-    db.query(sql, [index], (err,result) =>{err ? console.log(err) : res.send(result)})
+    db.query(sql, [index], (err, result) => { err ? console.log(err) : res.send(result) })
 })
 
 // Product task endpont
-app.get('/task', (req, res)=>{
+app.get('/task', (req, res) => {
     const sql = 'SELECT * FROM task';
-    db.query(sql, (err, result)=>{
-        if(err){
-            res.status(500).json({message: 'Error Fetching Products'})
-        }else{
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.status(500).json({ message: 'Error Fetching Products' })
+        } else {
             res.json(result);
         }
     })

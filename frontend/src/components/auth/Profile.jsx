@@ -9,10 +9,10 @@ const Profile = () => {
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-
+        
         const fetchUserDate = async () => {
             try {
-                const response = await axios.get('https://prueba-commerk-production.up.railway.app/profile', {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 });
                 setUserData(response.data.usuario);

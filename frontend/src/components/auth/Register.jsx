@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -13,7 +13,7 @@ const Register = () => {
         position_company: '',
         phone_number: ''
     })
-    console.log("formData",formData)
+    //console.log("formData",formData)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -23,11 +23,10 @@ const Register = () => {
         }))
     }
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://prueba-commerk-production.up.railway.app/register', formData);
+            // const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, formData);
             console.log("Registration Successful")
             navigate('/login')
         } catch (error) {

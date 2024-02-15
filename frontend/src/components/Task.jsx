@@ -11,12 +11,11 @@ const Task = () => {
     const [taskUser, setTasksUser] = useState();
     const [totaltask, setTotaltasks] = useState([]);
 
-    const baseUrl = "https://prueba-commerk-production.up.railway.app"
 
     useEffect(() => {
         const fetchUserDate = async () => {
             try {
-                const response = await axios.get('https://prueba-commerk-production.up.railway.app/profile', {
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 });
                 setUserData(response.data.usuario);
@@ -37,7 +36,7 @@ const Task = () => {
     }
 
     const handleClickButton = () => {
-        Axios.post(`${baseUrl}/task`, {
+        Axios.post(`${process.env.REACT_APP_BACKEND_URL}/task`, {
             name_task: values.name_task,
             username: userData.username,
             date: new Date(Date.now()),
@@ -49,7 +48,7 @@ const Task = () => {
     }
 
     useEffect(() => {
-        Axios.get(`${baseUrl}/task`)
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/task`)
             .then((response) => {
                 setTasks(response.data)
             })
