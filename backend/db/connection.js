@@ -24,12 +24,12 @@ const mysql = require('mysql2');
 
 const db = mysql.createConnection(urlDB)
 
-db.getConnection((err, con)=>{
-    if (err) {
-        console.log(`Could not connect to the database ${err}`)
-    }else{
-        console.log("Succesfully connected to the database")
-    }
-});
+// db.getConnection((err, con)=>{
+//     if (err) {
+//         console.log(`Could not connect to the database ${err}`)
+//     }else{
+//         console.log("Succesfully connected to the database")
+//     }
+// });
 
 module.exports = db;
