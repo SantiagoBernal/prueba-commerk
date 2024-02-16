@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const db = require('./db/connection.js')
 
 const app = express()
-const port = 3306;
+const port = 33060;
 app.use(express.json())
 app.use(cors());
 
