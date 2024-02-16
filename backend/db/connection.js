@@ -1,4 +1,4 @@
-// require("dotenv").config()
+require("dotenv").config()
 const mysql = require('mysql2');
 
 // const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`
@@ -13,12 +13,16 @@ const mysql = require('mysql2');
 //     database: process.env.DB_DATABASE,
 // });
 
-const db = mysql.createPool({
-    host:'localhost',
-    user:'root',
-    password:'Vamos.29620',
-    database:'auth'
-});
+// const db = mysql.createPool({
+//     host:'localhost',
+//     user:'root',
+//     password:'Vamos.29620',
+//     database:'auth'
+// });
+
+const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}`
+
+const db = mysql.createConnection(urlDB)
 
 db.getConnection((err, con)=>{
     if (err) {

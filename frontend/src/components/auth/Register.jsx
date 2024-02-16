@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -26,8 +26,8 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, formData);
-            console.log(response,"response")
+            // const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, formData);
+            // console.log(response,"response")
             console.log("Registration Successful")
             navigate('/login')
         } catch (error) {
