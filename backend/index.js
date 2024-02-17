@@ -129,6 +129,18 @@ app.get('/products', (req, res) => {
     })
 })
 
+// Product users enPoint
+app.get('/users', (req, res) => {
+    const sql = 'SELECT * FROM users';
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.status(500).json({ message: 'Error Fetching users' })
+        } else {
+            res.json(result);
+        }
+    })
+})
+
 // Product task endpoint
 app.post("/task", (req, res) => {
     const { username } = req.body;
