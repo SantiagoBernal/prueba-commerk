@@ -94,7 +94,7 @@ app.get('/profile', authenticate, (req, res) => {
 });
 
 app.put('/edit', (req, res) => {
-    // console.log("req",req)
+     console.log("req",req)
     const { id } = req.body;
     const { username } = req.body;
     const { last_name } = req.body;
