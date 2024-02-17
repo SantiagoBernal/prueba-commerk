@@ -39,8 +39,6 @@ export default function FormDialog(props) {
         setTimeout(() => {
             window.location.reload()
         }, 500);
-         
-
     }
 
     // const handleDeleteGame = () => {

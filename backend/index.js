@@ -137,7 +137,7 @@ app.post("/task", (req, res) => {
     const { amount } = req.body;
     const { date } = req.body;
 
-    let sql = "INSERT INTO task (username, name_task, email, amount, date) VALUES (?,?,?,?,?)"
+    let sql = "INSERT INTO tasks (username, name_task, email, amount, date) VALUES (?,?,?,?,?)"
     db.query(sql, [username, name_task, email, amount, date], (err, result) => {
         if (err) {
             console.log(err);
@@ -153,7 +153,7 @@ app.put("/editTask", (req, res) => {
     const { amount } = req.body;
 
 
-    let sql = "UPDATE task SET name_task = ?, amount = ? WHERE id = ?";
+    let sql = "UPDATE tasks SET name_task = ?, amount = ? WHERE id = ?";
     db.query(sql, [name_task, amount, id], (err, result) => {
         if (err) {
             console.log(err);
@@ -166,13 +166,13 @@ app.put("/editTask", (req, res) => {
 app.delete("/delete/:index", (req, res) => {
     const { index } = req.params
 
-    let sql = "DELETE FROM task WHERE id = ?"
+    let sql = "DELETE FROM tasks WHERE id = ?"
     db.query(sql, [index], (err, result) => { err ? console.log(err) : res.send(result) })
 })
 
 // Product task endpont
 app.get('/task', (req, res) => {
-    const sql = 'SELECT * FROM task';
+    const sql = 'SELECT * FROM tasks';
     db.query(sql, (err, result) => {
         if (err) {
             res.status(500).json({ message: 'Error Fetching Products' })

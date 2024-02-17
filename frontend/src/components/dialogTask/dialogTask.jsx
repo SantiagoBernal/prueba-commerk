@@ -15,7 +15,7 @@ export default function FormDialog(props) {
         amount: props.amount,
     });
 
-   //console.log("props",props)
+   console.log("props",props)
 
     const handleEditValues = () => {
         console.log(props.baseUrl)
