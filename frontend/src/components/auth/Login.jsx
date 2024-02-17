@@ -27,7 +27,7 @@ const Login = () => {
             // const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`, formData);
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL} /login`, formData);
             const { token } = response.data;
-            //console.log("Login Token is: " + token)
+            console.log("Login Token is: " + token)
             localStorage.setItem('token', token);
             setError('')
             navigate('/profile')
