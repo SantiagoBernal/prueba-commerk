@@ -45,7 +45,7 @@ const Task = () => {
             username: userData.username,
             date: new Date(Date.now()),
             email: userData.email,
-            amount: 85000,
+            amount: values.amount,
         }).then((response) => {
             console.log("response new task",response)
         });
@@ -62,7 +62,7 @@ const Task = () => {
 
 
     useEffect(() => {
-        if (task) {
+        if (task && userData) {
             let tasksDone = []
             for (let i = 0; i < task.length; i++) {
                 if (task[i].email === userData.email) {

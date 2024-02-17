@@ -36,7 +36,7 @@ export default function FormDialog(props) {
             position_company: editValues.position_company,
         });
         handleClose();
-        // window.location.reload()
+         window.location.reload()
 
     }
 

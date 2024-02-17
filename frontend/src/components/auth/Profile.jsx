@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import Axios from "axios";
 import "./card.css"
 import FormDialog from "./dialog/dialog";
 
@@ -7,28 +7,68 @@ const Profile = () => {
 
     const [userData, setUserData] = useState(null)
     const [open, setOpen] = useState(false);
+    // const [loading, setLoading] = useState(true);
 
 
-
-    const getTareas = () => {
-       const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
-        fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, { headers })
-            .then(response => response.json())
-            .then(data => setUserData(data.usuario));
+    // const getTareas = () => {
+    //    const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, { headers })
+    //         .then(response => response.json())
+    //         .then(data => setUserData(data.usuario));
           
-    }
+    // }
 
-    //console.log("userData", userData)
+    // console.log("userData", userData)
+
+    // useEffect(() => {
+    //     getTareas();
+    //  },[])
+
+  
+
+    // useEffect(() => {
+    //     const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, { headers })
+    //         .then(response => response.json())
+    //         .then(data => setUserData(data.usuario));
+        
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
+    // console.log("userData", userData)
 
     useEffect(() => {
-        getTareas();
-     },[])
+        const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`,{ headers })
+            .then((response) => {
+                //console.log("response", response)
+                setUserData(response.data.usuario)
+            })
+    }, [])
+    console.log("userData", userData)
 
 
 
     const cardOpen = () => {
         setOpen(true)
     }
+
+    // const [url, setUrl] = useState("");
+  
+    // useEffect(() => {
+    //   setLoading(true);
+    //   async function fetchData() {
+    //     const request = await fetch(
+    //       `https://dog.ceo/api/breed/${props.raza}/images/random`
+    //     );
+    //     const response = await request.json();
+    //     setLoading(false);
+    
+    //     setUrl(response.message);
+      
+    //   }
+    //   fetchData();
+      
+    // }, [props.raza]);
 
  
     return (
@@ -56,6 +96,7 @@ const Profile = () => {
 
                         <div className="information">
                             <button className="edit" onClick={cardOpen}>Editar Usuario</button>
+                            {/* <button className="delete" onClick={handleDeleteGame}>Delete</button> */}
                         </div>
 
                     </div>
