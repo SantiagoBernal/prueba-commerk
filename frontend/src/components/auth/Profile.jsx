@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
+// import Axios from "axios";
 import "./card.css"
 import FormDialog from "./dialog/dialog";
 
@@ -10,19 +10,19 @@ const Profile = () => {
     // const [loading, setLoading] = useState(true);
 
 
-    // const getTareas = () => {
-    //    const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
-    //     fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, { headers })
-    //         .then(response => response.json())
-    //         .then(data => setUserData(data.usuario));
+    const getProfile = () => {
+       const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, { headers })
+            .then(response => response.json())
+            .then(data => setUserData(data.usuario));
           
-    // }
+    }
 
-    // console.log("userData", userData)
+    console.log("userData", userData)
 
-    // useEffect(() => {
-    //     getTareas();
-    //  },[])
+    useEffect(() => {
+        getProfile();
+     },[])
 
   
 
@@ -36,15 +36,15 @@ const Profile = () => {
     // }, []);
     // console.log("userData", userData)
 
-    useEffect(() => {
-        const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
-        Axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`,{ headers })
-            .then((response) => {
-                //console.log("response", response)
-                setUserData(response.data.usuario)
-            })
-    }, [])
-    console.log("userData", userData)
+    // useEffect(() => {
+    //     const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+    //     Axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`,{ headers })
+    //         .then((response) => {
+    //             //console.log("response", response)
+    //             setUserData(response.data.usuario)
+    //         })
+    // }, [])
+    // console.log("userData", userData)
 
 
 

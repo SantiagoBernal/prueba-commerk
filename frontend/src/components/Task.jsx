@@ -36,7 +36,7 @@ const Task = () => {
             [value.target.name]: value.target.value,
         }))
     }
-    const areAllFieldsFilled = (values) && (values.name_task) && (values.name_task !== "")&& (values.amount)  && (values.amount !== "") 
+    const areAllFieldsFilled = (values) && (values.name_task) && (values.name_task !== "") && (values.amount) && (values.amount !== "")
     //console.log("values", values)
 
     const handleClickButton = () => {
@@ -47,18 +47,30 @@ const Task = () => {
             email: userData.email,
             amount: values.amount,
         }).then((response) => {
-            console.log("response new task",response)
+            console.log("response new task", response)
         });
         window.location.reload()
     }
 
-    useEffect(() => {
+    const getTask = () => {
         Axios.get(`${process.env.REACT_APP_BACKEND_URL}/task`)
             .then((response) => {
                 setTasks(response.data)
             })
-    }, [])
+    }
     console.log("task", task)
+
+    useEffect(() => {
+        getTask();
+    }, [])
+
+    // useEffect(() => {
+    //     Axios.get(`${process.env.REACT_APP_BACKEND_URL}/task`)
+    //         .then((response) => {
+    //             setTasks(response.data)
+    //         })
+    // }, [])
+    // console.log("task", task)
 
 
     useEffect(() => {
