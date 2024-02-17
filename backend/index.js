@@ -1,14 +1,22 @@
 const express = require('express');
-const cors = require('cors')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const db = require('./db/connection.js')
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const db = require('./db/connection.js');
 
-const app = express()
+const app = express();
+
+
+
+
 const port = process.env.PORT || 33060;
 app.use(express.json())
 app.use(cors());
 
+
+app.get('/', (req, res) => {
+    res.json("hello backend");
+})
 
 //Registration Endpoint
 app.post('/register', async (req, res) => {
@@ -91,7 +99,7 @@ app.get('/profile', authenticate, (req, res) => {
 });
 
 app.put('/edit', (req, res) => {
-     console.log("req",req)
+    console.log("req", req)
     const { id } = req.body;
     const { username } = req.body;
     const { last_name } = req.body;
@@ -175,6 +183,16 @@ app.get('/task', (req, res) => {
 })
 
 
-app.listen(port, () => {
-    console.log('Server is running ✌🏾')
+const server = app.listen(port, () => {
+    console.log('Server is running ✌🏾', port)
+})
+
+const SocketIO = require('socket.io');
+SocketIO(server);
+const io = SocketIO(server);
+
+//websockets
+
+io.on('connection', () => {
+    console.log("new connection")
 })

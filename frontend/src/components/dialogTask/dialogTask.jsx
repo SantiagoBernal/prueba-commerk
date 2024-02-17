@@ -25,6 +25,7 @@ export default function FormDialog(props) {
             amount: editValues.amount,
         });
         handleClose();
+        window.location.reload()
 
     }
 

@@ -12,6 +12,8 @@ const Task = () => {
     const [totaltask, setTotaltasks] = useState([]);
 
 
+
+
     useEffect(() => {
         const fetchUserDate = async () => {
             try {
@@ -34,6 +36,8 @@ const Task = () => {
             [value.target.name]: value.target.value,
         }))
     }
+    const areAllFieldsFilled = (values) && (values.name_task) && (values.name_task !== "")&& (values.amount)  && (values.amount !== "") 
+    //console.log("values", values)
 
     const handleClickButton = () => {
         Axios.post(`${process.env.REACT_APP_BACKEND_URL}/task`, {
@@ -45,6 +49,7 @@ const Task = () => {
         }).then((response) => {
             console.log(response)
         });
+        window.location.reload()
     }
 
     useEffect(() => {
@@ -55,7 +60,7 @@ const Task = () => {
     }, [])
     //console.log("task", task)
 
-  
+
     useEffect(() => {
         if (task) {
             let tasksDone = []
@@ -85,7 +90,9 @@ const Task = () => {
                 <div className="cards">
                     <input className="register-input" type="text" name="name_task" placeholder="Nombre tarea" onChange={handleChangeValues} />
                     <input className="register-input" type="text" name="amount" placeholder="Valor tarea" onChange={handleChangeValues} />
-                    <button className="register-input" onClick={handleClickButton}>Agregar</button>
+                    <button className="register-input"
+                        disabled={!areAllFieldsFilled}
+                        onClick={handleClickButton}>Agregar</button>
                 </div>
                 <br />
                 <h3 className="title">
@@ -93,7 +100,7 @@ const Task = () => {
                     <b className="titleLeft">{taskUser && taskUser.length > 0 ? 'TAREAS AGREGADAS' : 'NO TIENE TAREAS AÚN'}</b>
 
                     <b className="titleRight">{taskUser && taskUser.length > 0 ? `VALOR TOTAL  $${totaltask.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}` : ''}</b>
-                   
+
                 </h3>
                 <div className="cards">
                     {typeof taskUser !== 'undefined' &&
@@ -114,22 +121,6 @@ const Task = () => {
             </div>
         </div>
 
-
-
-        // <div className="home-container">
-        //     <h2>Tareas</h2>
-        //     <div className="product-list">
-        //         {products.map((product, index)=>(
-        //             <div className="product-item" key={index}>
-        //                 <h3>{product.username}</h3>
-        //                 <p>{product.date}</p>
-        //                 <p>{product.email}</p>
-        //                 <p className="amount">${product.amount}</p>
-        //             </div>
-        //         ))}
-
-        //     </div>
-        // </div>
     )
 
 }

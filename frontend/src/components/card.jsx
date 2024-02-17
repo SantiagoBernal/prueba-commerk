@@ -15,6 +15,7 @@ const Card = (props) => {
 
     const handleDeleteGame = () => {
         axios.delete(`${process.env.REACT_APP_BACKEND_URL}/delete/${props.id}`);
+         window.location.reload()
     }
 
     return (

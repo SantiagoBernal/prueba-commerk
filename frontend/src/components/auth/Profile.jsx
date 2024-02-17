@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./card.css"
 import FormDialog from "./dialog/dialog";
 
@@ -8,22 +8,23 @@ const Profile = () => {
     const [userData, setUserData] = useState(null)
     const [open, setOpen] = useState(false);
 
-    useEffect(() => {
-        
-        const fetchUserDate = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
-                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-                });
-                setUserData(response.data.usuario);
-            } catch (err) {
-                console.log('Error Fetching user profile data: ' + err)
-            }
-        }
 
-        fetchUserDate();
-    }, [])
+
+    const getTareas = () => {
+       const headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, { headers })
+            .then(response => response.json())
+            .then(data => setUserData(data.usuario));
+          
+    }
+
     //console.log("userData", userData)
+
+    useEffect(() => {
+        getTareas();
+     },[])
+
+
 
     const cardOpen = () => {
         setOpen(true)
@@ -55,7 +56,6 @@ const Profile = () => {
 
                         <div className="information">
                             <button className="edit" onClick={cardOpen}>Editar Usuario</button>
-                            {/* <button className="delete" onClick={handleDeleteGame}>Delete</button> */}
                         </div>
 
                     </div>

@@ -39,6 +39,7 @@ const Login = () => {
                 setError('');
             }, 3000);
         }
+        window.location.reload()
     }
 
     return (
