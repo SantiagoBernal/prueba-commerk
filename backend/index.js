@@ -16,9 +16,6 @@ app.post('/register', async (req, res) => {
 
     //Hash the Password
     const hashedPassword = await bcrypt.hash(password, 10)
-    // console.log(hashedPassword);
-    // console.log("Usuario",username,email,last_name, position_company, phone_number);
-
 
     const sql = 'INSERT INTO users (username, password, email, last_name, position_company, phone_number ) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(sql, [username, hashedPassword, email, last_name, position_company, phone_number], (err, result) => {
@@ -126,7 +123,6 @@ app.get('/products', (req, res) => {
 
 // Product task endpoint
 app.post("/task", (req, res) => {
-    //console.log("req post task",req.body)
     const { username } = req.body;
     const { name_task } = req.body;
     const { email } = req.body;
@@ -144,7 +140,6 @@ app.post("/task", (req, res) => {
 });
 
 app.put("/editTask", (req, res) => {
-    //console.log("req edit task",req.body)
     const { id } = req.body;
     const { name_task } = req.body;
     const { amount } = req.body;
