@@ -49,7 +49,9 @@ const Task = () => {
         }).then((response) => {
             console.log("response new task", response)
         });
-        window.location.reload()
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
     }
 
     const getTask = () => {
