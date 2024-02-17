@@ -47,7 +47,7 @@ const Task = () => {
             email: userData.email,
             amount: 85000,
         }).then((response) => {
-            console.log(response)
+            console.log("response new task",response)
         });
         window.location.reload()
     }
@@ -58,7 +58,7 @@ const Task = () => {
                 setTasks(response.data)
             })
     }, [])
-    //console.log("task", task)
+    console.log("task", task)
 
 
     useEffect(() => {
@@ -72,7 +72,7 @@ const Task = () => {
             setTasksUser(tasksDone)
         }
     }, [task, userData])
-    //console.log("taskUser", taskUser)
+    console.log("taskUser", taskUser)
 
     useEffect(() => {
         if (taskUser) {

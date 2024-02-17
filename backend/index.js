@@ -142,7 +142,7 @@ app.post("/task", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            console.log(result);
+            console.log("new task result",result);
         }
     })
 });
