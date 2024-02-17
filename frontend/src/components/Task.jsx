@@ -62,6 +62,7 @@ const Task = () => {
 
     useEffect(() => {
         getTask();
+        console.log("getTask", getTask)
     }, [])
 
     // useEffect(() => {

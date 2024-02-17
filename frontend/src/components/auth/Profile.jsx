@@ -22,6 +22,7 @@ const Profile = () => {
 
     useEffect(() => {
         getProfile();
+        console.log("getProfile", getProfile)
      },[])
 
   
