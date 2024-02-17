@@ -23,7 +23,7 @@ const Profile = () => {
 
         fetchUserDate();
     }, [])
-    console.log("userData", userData)
+    //console.log("userData", userData)
 
     const cardOpen = () => {
         setOpen(true)
@@ -61,7 +61,7 @@ const Profile = () => {
                     </div>
 
                 ) : (
-                    <p>Loading user data</p>
+                    <p>...</p>
                 )
             }
 

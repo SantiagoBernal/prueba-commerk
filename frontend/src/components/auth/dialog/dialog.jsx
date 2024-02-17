@@ -28,7 +28,7 @@ export default function FormDialog(props) {
    
     const handleEditValues = () => {
         console.log(props.baseUrl)
-        axios.put(`${process.env.REACT_APP_BACKEND_URL} /edit`, {
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/edit`, {
             id: editValues.id,
             username: editValues.username,
             last_name: editValues.last_name,
