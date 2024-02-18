@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-// import SearchLocationInput from "./componentsMaps/GooglePlcasesApi";
-// import MapComponent from "./componentsMaps/Map";
+import {
 
-// import { useState } from "react";
+    TextField,
+} from '@mui/material';
+
 import "./dialog.css"
 import axios from "axios";
 
 
+
 export default function FormDialog(props) {
 
-   
+
+
     const [editValues, setEditValues] = useState({
         id: props.id,
         username: props.username,
@@ -24,8 +26,8 @@ export default function FormDialog(props) {
         position_company: props.position_company,
     });
 
-    //console.log("props",props)
-   
+    //console.log("props FormDialog",props)
+
     const handleEditValues = () => {
         console.log(props.baseUrl)
         axios.put(`${process.env.REACT_APP_BACKEND_URL}/edit`, {
@@ -41,9 +43,6 @@ export default function FormDialog(props) {
         }, 500);
     }
 
-    // const handleDeleteGame = () => {
-    //     axios.delete(`http://localhost:3001/delete/${editValues.id}`)
-    // }
 
     const handleChangeValues = (value) => {
         setEditValues(prevValues => ({
@@ -109,6 +108,7 @@ export default function FormDialog(props) {
                             fullWidth
                             variant="standard"
                         />
+
                     </DialogContent>
 
                     <DialogActions>

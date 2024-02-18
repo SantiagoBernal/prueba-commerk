@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import axios from "axios";
-import Card from "./card";
+import Card from "./cardTask";
 
 const Task = () => {
 
@@ -47,7 +47,7 @@ const Task = () => {
             email: userData.email,
             amount: values.amount,
         }).then((response) => {
-            console.log("response new task", response)
+            //console.log("response new task", response)
         });
         setTimeout(() => {
             window.location.reload()
@@ -60,22 +60,14 @@ const Task = () => {
                 setTasks(response.data)
             })
     }
-    console.log("task", task)
+    //console.log("task", task)
 
     useEffect(() => {
         getTask();
-        console.log("getTask", getTask)
+        //console.log("getTask", getTask)
     }, [])
 
-    // useEffect(() => {
-    //     Axios.get(`${process.env.REACT_APP_BACKEND_URL}/task`)
-    //         .then((response) => {
-    //             setTasks(response.data)
-    //         })
-    // }, [])
-    // console.log("task", task)
-
-
+   
     useEffect(() => {
         if (task && userData) {
             let tasksDone = []
@@ -87,7 +79,7 @@ const Task = () => {
             setTasksUser(tasksDone)
         }
     }, [task, userData])
-    console.log("taskUser", taskUser)
+    //console.log("taskUser", taskUser)
 
     useEffect(() => {
         if (taskUser) {

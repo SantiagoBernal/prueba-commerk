@@ -10,13 +10,13 @@ const Navbar = ({ loggedIn, handleLogout }) => {
     const authenticate = async () => {
         try {
           const token = localStorage.getItem('token');
-          console.log(token)
+          //console.log(token)
           if (token) {
             setLogged(true)
           } else {
             setLogged(false)
           }
-          console.log("logged",logged)
+          //console.log("logged",logged)
     
         } catch (err) {
           console.log(err)

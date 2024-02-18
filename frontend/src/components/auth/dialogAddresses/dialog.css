@@ -1,20 +1,25 @@
 .inputMaps {
-    /* display: flex; */
-    /* height: 25px; */
-    /* padding: 20px 20px;
-    margin: 8px 0; */
-    /* box-sizing: border-box;
-    padding-left: 100px;
-    text-align: center; */
-    /* align-items: center;
-    display: block;
+    text-align: center;
+    align-items: center;
     margin-right: auto;
-    margin-left: auto; */
-    /* display: block; */
-    padding-top: 5%;
-    width: 100%;
-    /* box-sizing: border-box;  */
+    margin-left: auto;
+    padding-bottom:20%;
+    font-size:18pt;
+     height:120px;
+     width:400px;
+     margin: 0;
+     width: '100%';
+     width: inherit !important;
 
+}
+
+.input {
+
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin: 0;
+    width: '100%';
 }
 
 .game-card {

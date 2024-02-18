@@ -1,4 +1,26 @@
 
+
+.EditInformation {
+  margin-right: 1%;
+  display:inline-block;
+  width: 300px;
+  height: 40px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.EditDirecctions {
+  margin-left:  1%;
+  display:inline-block;
+  width: 300px;
+  height: 40px;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
@@ -8,6 +30,17 @@ body {
 .information {
   padding-left: 20px;
   text-align: center;
+}
+
+.buttons {
+  float: left;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-top:5em
 }
 
 .navbar {

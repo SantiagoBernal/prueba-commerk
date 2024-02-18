@@ -21,7 +21,7 @@ const App = () => {
         setLoggedIn(false)
         // handleLogout()
       }
-      console.log("loggedIn",loggedIn)
+      //console.log("loggedIn",loggedIn)
 
     } catch (err) {
       //console.log(err)

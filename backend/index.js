@@ -36,7 +36,6 @@ app.post('/register', async (req, res) => {
 });
 
 //Login Endpoint
-
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     //Check if username and password are present
@@ -98,6 +97,7 @@ app.get('/profile', authenticate, (req, res) => {
     })
 });
 
+// Edit users enPoint
 app.put('/edit', (req, res) => {
     console.log("req", req)
     const { id } = req.body;
@@ -141,7 +141,73 @@ app.get('/users', (req, res) => {
     })
 })
 
-// Product task endpoint
+//  Add address endpoint
+app.post("/address", (req, res) => {
+    const { username } = req.body;
+    const { coords } = req.body;
+    const { location } = req.body;
+    const { description } = req.body;
+    const { postal_code } = req.body;
+    const { user_email } = req.body;
+    const { name_address } = req.body;
+
+    let sql = "INSERT INTO address (username, coords, location, description, postal_code, user_email,name_address) VALUES (?,?,?,?,?,?,?)"
+    db.query(sql,
+        [
+            username,
+            coords,
+            location,
+            description,
+            postal_code,
+            user_email,
+            name_address
+        ], (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("new address result", result);
+            }
+        })
+});
+
+//  Edit Address endpoint
+app.put("/editAddress", (req, res) => {
+    const { id } = req.body;
+    const { name_address } = req.body;
+
+
+
+    let sql = "UPDATE address SET name_address = ? WHERE id = ?";
+    db.query(sql, [name_address, id], (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(result);
+        }
+    })
+});
+
+//  Delete Address endpoint
+app.delete("/deleteAddress/:index", (req, res) => {
+    const { index } = req.params
+
+    let sql = "DELETE FROM address WHERE id = ?"
+    db.query(sql, [index], (err, result) => { err ? console.log(err) : res.send(result) })
+})
+
+// address endpoint
+app.get('/address', (req, res) => {
+    const sql = 'SELECT * FROM address';
+    db.query(sql, (err, result) => {
+        if (err) {
+            res.status(500).json({ message: 'Error Fetching Products' })
+        } else {
+            res.json(result);
+        }
+    })
+})
+
+//  Add task endpoint
 app.post("/task", (req, res) => {
     const { username } = req.body;
     const { name_task } = req.body;
@@ -154,11 +220,12 @@ app.post("/task", (req, res) => {
         if (err) {
             console.log(err);
         } else {
-            console.log("new task result",result);
+            console.log("new task result", result);
         }
     })
 });
 
+//  Edit task endpoint
 app.put("/editTask", (req, res) => {
     const { id } = req.body;
     const { name_task } = req.body;
@@ -175,6 +242,7 @@ app.put("/editTask", (req, res) => {
     })
 });
 
+//  Delete task endpoint
 app.delete("/delete/:index", (req, res) => {
     const { index } = req.params
 
@@ -182,7 +250,7 @@ app.delete("/delete/:index", (req, res) => {
     db.query(sql, [index], (err, result) => { err ? console.log(err) : res.send(result) })
 })
 
-// Product task endpont
+// task endponit
 app.get('/task', (req, res) => {
     const sql = 'SELECT * FROM tasks';
     db.query(sql, (err, result) => {

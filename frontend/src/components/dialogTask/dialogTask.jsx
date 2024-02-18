@@ -15,7 +15,7 @@ export default function FormDialog(props) {
         amount: props.amount,
     });
 
-   console.log("props",props)
+   //console.log("props",props)
 
     const handleEditValues = () => {
         console.log(props.baseUrl)
@@ -31,9 +31,6 @@ export default function FormDialog(props) {
 
     }
 
-    // const handleDeleteGame = () => {
-    //     axios.delete(`http://localhost:5500/delete/${editValues.id}`)
-    // }
 
     const handleChangeValues = (value) => {
         setEditValues(prevValues => ({
@@ -42,10 +39,6 @@ export default function FormDialog(props) {
         })
         )
     }
-
-    // const handleClickOpen = () => {
-    //     props.setOpen(true);
-    // };
 
     const handleClose = () => {
         props.setOpen(false);

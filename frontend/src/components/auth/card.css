@@ -1,4 +1,4 @@
-.game-card{
+.game-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,7 +11,7 @@
     border-width: 1px;
 }
 
-.actions button{
+.actions button {
     height: 25px;
     margin-right: 5px;
     padding-inline: 10px;
@@ -21,16 +21,27 @@
     border-color: lightslategrey;
 }
 
-.edit{
-    font-size: medium;
-    width: 205px;
-    border-radius: 8px;
-    height: 45px;
-    background-color: deepskyblue;
-    color: white;
+.edit {
+    padding-left: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
-.delete{
+.EditInformation {
+    width: 300px;
+    height: 40px;
+    display: inline-block;
+}
+
+.EditDirecctions {
+    width: 300px;
+    height: 40px;
+    display: inline-block;
+}
+
+.delete {
     background-color: crimson;
     color: white;
 }
