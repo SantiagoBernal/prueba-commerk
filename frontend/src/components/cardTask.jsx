@@ -35,8 +35,8 @@ const Card = (props) => {
                     <p><b>Registro de tarea:</b> {props.date}</p>
                 </div>
                 <div className="actions">
-                    <button className="edit" onClick={cardOpen}>Editar tarea</button>
-                    <button className="delete" onClick={handleDeleteTask}>Eliminar tarea</button>
+                    <button className="editAddress" onClick={cardOpen}>Editar tarea</button>
+                    <button className="deleteAddress" onClick={handleDeleteTask}>Eliminar tarea</button>
                 </div>
             </div>
         </>

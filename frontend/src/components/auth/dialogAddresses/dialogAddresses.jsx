@@ -19,6 +19,7 @@ export default function FormDialogAddresses(props) {
 
     const [Address, setAddress] = useState(null);
     const [userData, setUserData] = useState(null)
+    const [postalCode, setPostalCode] = useState(null)
 
 
     const [editValues, setEditValues] = useState({
@@ -26,8 +27,8 @@ export default function FormDialogAddresses(props) {
         name_address: props.name_address,
     });
 
-    //console.log("editValues", editValues)
-    //console.log("props FormDialogAddresses", props)
+    console.log("editValues", editValues)
+    console.log("props FormDialogAddresses", props)
 
 
     const getProfile = () => {
@@ -45,7 +46,20 @@ export default function FormDialogAddresses(props) {
         //console.log("getProfile", getProfile)
     }, [])
 
-    //console.log("Address ", Address)
+    console.log("Address ", Address)
+
+    useEffect(() => {
+        if (Address && Address.placeDetails) {
+            let address_components = Address.placeDetails.address_components
+            for (let i = 0; i < address_components.length; i++) {
+                if (address_components[i].types[0] === "postal_code") {
+                    setPostalCode(address_components[i])
+                }
+            }
+
+        }
+    }, [Address])
+    //console.log("postalCode ", postalCode)
 
     const handleChangeValues = (value) => {
         setEditValues(prevValues => ({
@@ -63,7 +77,7 @@ export default function FormDialogAddresses(props) {
             coords: `Latitud${Address.coords.lat}- longitud${Address.coords.lng}`,
             location: `http://maps.google.com/maps?q=${Address.coords.lat},${Address.coords.lng}`,
             description: Address.description,
-            postal_code: "760033",
+            postal_code: postalCode.long_name,
             user_email: userData.email,
             name_address: editValues.name_address,
         });

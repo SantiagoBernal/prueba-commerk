@@ -40,17 +40,6 @@ export default function GoogleMapsAutoComplete(props) {
   const [value, setValue] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState([]);
-  // const { t } = useTranslation();
-  // const { i18n  } = useTranslation();
-  // const isRTL = i18n.dir();
-  // const settingsdata = useSelector(state => state.settingsdata);
-  // const [settings,setSettings] = useState({});
-
-  // useEffect(()=>{
-  //   if(settingsdata.settings){
-  //     setSettings(settingsdata.settings);
-  //   }
-  // },[settingsdata.settings]);
 
   const fetch = useMemo(
     () =>

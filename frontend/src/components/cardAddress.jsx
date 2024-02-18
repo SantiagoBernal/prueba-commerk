@@ -39,7 +39,7 @@ const Card = (props) => {
                     <p><b>Ubicación:</b> {props.location} <a href={props.location} target="_blank" rel="noreferrer">Ver ubicación</a></p>
                     <p><b>Código postal:</b> {props.postal_code}</p>
                 </div>
-                <div>
+                <div className="actions">
                     <button className="editAddress" onClick={cardOpen}>Editar dirección</button>
                     <button className="deleteAddress" onClick={handleDeleteAddress}>Eliminar dirección</button>
                 </div>
