@@ -27,8 +27,8 @@ export default function FormDialogAddresses(props) {
         name_address: props.name_address,
     });
 
-    console.log("editValues", editValues)
-    console.log("props FormDialogAddresses", props)
+    //console.log("editValues", editValues)
+    //console.log("props FormDialogAddresses", props)
 
 
     const getProfile = () => {
@@ -46,7 +46,7 @@ export default function FormDialogAddresses(props) {
         //console.log("getProfile", getProfile)
     }, [])
 
-    console.log("Address ", Address)
+    //console.log("Address ", Address)
 
     useEffect(() => {
         if (Address && Address.placeDetails) {
