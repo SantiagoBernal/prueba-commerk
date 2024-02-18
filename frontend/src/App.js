@@ -19,11 +19,12 @@ const App = () => {
         setLoggedIn(true)
       } else {
         setLoggedIn(false)
+        // handleLogout()
       }
-      //console.log("loggedIn",loggedIn)
+      console.log("loggedIn",loggedIn)
 
     } catch (err) {
-      console.log(err)
+      //console.log(err)
       setLoggedIn(false)
     }
   }
@@ -33,7 +34,7 @@ const App = () => {
     authenticate();
   }, []);
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     localStorage.removeItem('token');
     setLoggedIn(false);
   }
@@ -43,6 +44,7 @@ const App = () => {
     <BrowserRouter>
       <Navbar loggedIn={loggedIn} handleLogout={handleLogout} />
       <Routes>
+        <Route exact path="/" element={!loggedIn ? <Navigate to='/login'/> : <Navigate to='/profile' />}/>
         <Route path="/task" element={<Task />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
