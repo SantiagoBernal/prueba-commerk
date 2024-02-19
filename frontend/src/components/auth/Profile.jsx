@@ -12,6 +12,7 @@ const Profile = () => {
     const [open, setOpen] = useState(false);
     const [openAddresses, setOpenAddresses] = useState(false);
     const [address, setaddress] = useState();
+    const [addressUser, setaddressUser] = useState();
 
     // const [loading, setLoading] = useState(true);
 
@@ -42,6 +43,19 @@ const Profile = () => {
         getProfile();
         //console.log("getProfile", getProfile)
     }, [])
+
+    useEffect(() => {
+        if (address && userData) {
+            let tasksDone = []
+            for (let i = 0; i < address.length; i++) {
+                if (address[i].user_email === userData.email) {
+                    tasksDone.push(address[i])
+                }
+            }
+            setaddressUser(tasksDone)
+        }
+    }, [address, userData])
+    //console.log("addressUser", addressUser)
 
     const cardOpenAddresses = () => {
         setOpenAddresses(true)
@@ -92,8 +106,8 @@ const Profile = () => {
                             <b className="titleLeft">{address && address.length > 0 ? 'DIRECCIONES AGREGADAS' : 'NO TIENE DIRECCIONES AÚN'}</b>
                         </h3>
                         <div className="cards">
-                            {typeof address !== 'undefined' &&
-                                address.map((Addresses) => {
+                            {typeof addressUser !== 'undefined' &&
+                                addressUser.map((Addresses) => {
                                     return <Card
                                         key={Addresses.id}
                                         id={Addresses.id}
