@@ -53,7 +53,7 @@ app.post('/login', async (req, res) => {
             const match = await bcrypt.compare(password, result[0].password);
             if (match) {
                 //create a jwt token
-                const token = jwt.sign({ userId: result[0].id }, 'my_secret_key', { expiresIn: '1h' });
+                const token = jwt.sign({ userId: result[0].id }, 'my_secret_key', { expiresIn: '12h' });
                 res.json({ message: 'Login Successful', token })
             } else {
                 res.status(401).json({ message: 'Invalid Password' })
